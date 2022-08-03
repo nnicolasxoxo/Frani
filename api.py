@@ -12,8 +12,3 @@ def hola():
 
     return{miApp.ingresardatos()}
 
-@app.get('/tables')
-def get_tablas():
-    miApp=App()
-    return{miApp.ingresardatos()}
-
