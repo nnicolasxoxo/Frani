@@ -4,21 +4,23 @@ from mysqlx import Column, Session
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import column, Integer, string, DateTime
+from sqlalchemy import Column, Integer, String, DateTime
 
-engine = create_engine('mysql+pymysql://root:Fr@ani12345@localhost=3306')
+engine = create_engine('mysql+pymysql://admin:123456PROG@localhost/peliculas')
 Base= declarative_base()
 
-class user(Base):
-    __tablename__= 'users'
+class pelicula(Base):
+    __tablename__= 'peliculas'
 
-    id= column (Integer(), primary_key=True)
-    genero= Column(String(50),nullable=False, unique=True)
-    idioma= Column (String(50), nullable=False, unique=True)
+    id= Column (Integer(), primary_key=True)
+    nombre = Column(String(50),nullable=False, unique=True)
+    genero = Column (String(50), nullable=False, unique=True)
+    descripcion = Column (String(100), nullable=False, unique=True)
+    duración = Column (String(50), nullable=False, unique=True)
     created_at = Column(DateTime(), default=datetime.now())
 
     def __str__(self):
-        return self.username
+        return self.nombre
 
 Session= sessionmaker (engine)
 session= Session()
